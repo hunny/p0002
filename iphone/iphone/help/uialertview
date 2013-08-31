@@ -1,0 +1,37 @@
+#pragma marks -- UIAlertViewDelegate --
+//根据被点击按钮的索引处理点击事件
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"clickButtonAtIndex:%d",buttonIndex);
+    if(alertView.tag==0 && buttonIndex==0){
+        NSLog(@"点击的是第一个alert的OK按钮");
+    }
+    
+    if(alertView.tag==1 && buttonIndex==0){
+        NSLog(@"点击的是第2个alert的OK按钮");
+    }
+}
+
+//AlertView已经消失时执行的事件
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"didDismissWithButtonIndex");
+}
+
+//ALertView即将消失时的事件
+-(void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"willDismissWithButtonIndex");
+}
+
+//AlertView的取消按钮的事件
+-(void)alertViewCancel:(UIAlertView *)alertView
+{
+    NSLog(@"alertViewCancel");
+}
+
+//AlertView已经显示时的事件
+-(void)didPresentAlertView:(UIAlertView *)alertView
+{
+    NSLog(@"didPresentAlertView");
+}

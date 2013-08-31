@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript">
+		</script>
+		<link rel="stylesheet"  href="jquery.mobile-1.3.1.min.css"/>
+		<script src="jquery-1.10.0.min.js"></script>
+		<script src="jquery.mobile-1.3.1.min.js"></script>
+	</head>
+	<body>
+		<div data-role="page">
+			<div data-id="myheader" data-role="header" data-position="fixed" data-tap-toggle="true"><h1>欢迎使用</h1></div>
+			<div data-role="content">
+				<div data-role="collapsible-set" data-theme="b" data-content-theme="c">
+				    <div data-role="collapsible" data-collapsed="false">
+				        <h3>软件说明</h3>
+						<p>　　本产品设计的目的是为用户提供产品信息、广告、求购、物流配送、资金担保及其它需求信息，并通过沟通服务达成交易的互联资讯平台。</p>
+						<code id="debug"></code>
+				    </div>
+				    <div data-role="collapsible">
+				        <h3>相关操作</h3>
+						<ul data-role="listview" data-inset="true">
+						    <li data-icon="refresh"><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview'">刷新</a></li>
+						    <li data-icon="gear"><a href="#" onclick="javascript:location.href='http://callClient/showInputAlert'">设置</a></li>
+						</ul>
+				    </div>
+			    </div>
+			</div>
+			<div data-id="myfooter" data-role="footer" data-position="fixed"">
+				<div data-role="navbar" data-iconpos="left">
+					<ul>
+						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=1'" rel="external" data-icon="gear">售卖</a></li>  
+						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=2'" rel="external" data-icon="refresh">购买</a></li>
+						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=3'" rel="external" data-icon="grid">助手</a></li>
+						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=4'" rel="external" data-icon="home">用户</a></li>
+					</ul>
+				</div
+			</div>
+		</div>
+		<script type="text/javascript">  
+		$(document).bind("pageinit", function() {
+			$("[data-role=page]").click();
+		});
+		</script>
+	</body>
+</html>

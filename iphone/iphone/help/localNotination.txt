@@ -1,0 +1,40 @@
+
+    //设置通知次数取消
+    application.applicationIconBadgeNumber = 0;
+  
+    //打开本地通知
+    UILocalNotification *notification=[[UILocalNotification alloc] init];
+    NSDate *now1=[NSDate date];//相当于new Date
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    notification.repeatInterval=NSDayCalendarUnit;
+    notification.applicationIconBadgeNumber = 1;
+    notification.alertAction = NSLocalizedString(@"显示", nil);
+    notification.fireDate=[now1 dateByAddingTimeInterval:5];
+    notification.alertBody=@"通知测试";
+    [notification setSoundName:UILocalNotificationDefaultSoundName];
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSString stringWithFormat:@"%d",1], @"key1", nil];
+    [notification setUserInfo:dict];
+    [[UIApplication sharedApplication]   scheduleLocalNotification:notification];
+    
+    
+    
+    
+    本地推送没有做过, 你试下在app启动的时候判断
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+
+if (launchOptions != nil) {
+        NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (userInfo != nil) {
+            ///
+        }
+        NSLog(@"remote notification:%@",userInfo);
+    }
+    
+1、alert  confirm
+4、页面切换
+2、图片上传
+3、自动通知
+
+

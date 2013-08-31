@@ -1,0 +1,12 @@
+<root>
+    <info>
+        <title>用户订阅的信息</title>
+    </info>
+    <date>
+        <time>2013-08-21 20:23:02</time>
+    </date>
+    <items>
+        <item identify="001" market="1" key="user001" saleType="type001" credit="杨国旗">龙虾</item>
+        <item identify="002" market="2" key="user002" saleType="type002" credit="胡泽雄">抢鱼</item>
+    </items>
+</root>

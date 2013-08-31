@@ -1,0 +1,159 @@
+
+
+- (void)didNofinationFinish
+{
+    //打开本地通知
+    notification=[[UILocalNotification alloc] init];
+    NSDate *now1=[NSDate date];//相当于new Date
+    notification.timeZone=[NSTimeZone defaultTimeZone];
+    notification.repeatInterval=NSWeekdayCalendarUnit;
+    //NSDayCalendarUnit;
+    notification.applicationIconBadgeNumber = 0;
+    notification.alertAction = NSLocalizedString(@"显示", nil);
+    notification.fireDate=[now1 dateByAddingTimeInterval:500000];
+    
+    notification.alertBody=[NSString stringWithFormat:@"通知测试  %i",(arc4random() % 50)];
+    //notification.alertAction=@"打开";
+    
+    
+    [notification setSoundName:UILocalNotificationDefaultSoundName];
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSString stringWithFormat:@"%d",1], @"key1", nil];
+    
+    //[dict setValue: @"测试2" forKey:@"accpkey"];
+    
+    [notification setUserInfo:dict];
+    
+    //NSKeyValueObservingOptions
+    
+    //[notification addObserver:self forKeyPath:@"http://www.baidu.com" options:nil context:nil];
+    
+    
+    [[UIApplication sharedApplication]   scheduleLocalNotification:notification];
+    
+    
+    NSLog(@"didNofination2== %@  random %i",@"yangguoqi ==",(arc4random() % 100));
+}
+
+- (void)cancelLocalNotification
+{
+    if(notification ==nil)
+        return;
+    
+    NSArray *myArray=[[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (int i=0; i<[myArray count]; i++) {
+        NSLog(@"notification==");
+        UILocalNotification    *myUILocalNotification=[myArray objectAtIndex:i];
+        //if ([[[myUILocalNotification userInfo] objectForKey:@"key1"] intValue]==switch1.tag) {
+            [[UIApplication sharedApplication] cancelLocalNotification:myUILocalNotification];
+        //}
+    }
+}
+
+
+
+
+   NSTimer *myTimer = [NSTimer  timerWithTimeInterval:3.0 target:self selector:@selector(didNofination) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop  currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
+    
+    //2秒只执行一次方法didNofination2
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(didNofination2) userInfo:nil repeats:YES];
+    
+    
+
+-(NSString *)getCurrentTime
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    self.startTime = dateTime;
+    return startTime;
+}
+
+date1代表开始时间，在开始计时的地方调用 [self getCurrentTime]; 在结束时的方法里写如下代码：
+
+NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+[formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+NSDate *date1 = [formatter dateFromString:startTime];
+NSDate *date2 = [NSDate date];
+NSTimeInterval aTimer = [date2 timeIntervalSinceDate:date1];
+
+int hour = (int)(aTimer/3600);
+int minute = (int)(aTimer - hour*3600)/60;
+int second = aTimer - hour*3600 - minute*60;
+NSString *dural = [NSString stringWithFormat:@"%d时%d分%d秒", hour, minute,second];
+
+
+
+ios 有如下三种随机数方法：
+
+1.    srand((unsigned)time(0));  //不加这句每次产生的随机数不变
+        int i = rand() % 5;      
+
+2.    srandom(time(0));
+        int i = random() % 5;
+
+3.    int i = arc4random() % 5 ;
+
+ 
+
+注：rand()和random()实际并不是一个真正的伪随机数发生器，在使用之前需要先初始化随机种子，否则每次生成的随机数一样。
+
+arc4random() 是一个真正的伪随机算法，不需要生成随机种子，因为第一次调用的时候就会自动生成。而且范围是rand()的两倍。在iPhone中，RAND_MAX是0x7fffffff (2147483647)，而arc4random()返回的最大值则是 0x100000000 (4294967296)。
+
+精确度比较：arc4random()  >  random()  >  rand()。
+
+ 
+
+常用方法：arc4random
+
+ 
+
+1、获取一个随机整数范围在：[0,100)包括0，不包括100
+
+int x = arc4random() % 100;
+
+2、  获取一个随机数范围在：[500,1000），包括500，不包括1000
+
+int y = (arc4random() % 501) + 500;
+
+3、获取一个随机整数，范围在[from,to），包括from，不包括to
+
+-(int)getRandomNumber:(int)from to:(int)to
+
+{
+
+    return (int)(from + (arc4random() % (to – from + 1)));
+
+}
+
+
+
+iOS 手机号码格式检测 (2013-05-04 17:16:21)转载▼
+标签： ios oc	分类： IOS
+- (BOOL)isMobileNumber:(NSString *)mobileNum
+{
+    NSString * MOBILE = @"^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$";
+    NSString * CM = @"^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$";
+    NSString * CU = @"^1(3[0-2]|5[256]|8[56])\\d{8}$";
+    NSString * CT = @"^1((33|53|8[09])[0-9]|349)\\d{7}$";
+    // NSString * PHS = @"^0(10|2[0-5789]|\\d{3})\\d{7,8}$";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+    if (([regextestmobile evaluateWithObject:mobileNum] == YES)
+        || ([regextestcm evaluateWithObject:mobileNum] == YES)
+        || ([regextestct evaluateWithObject:mobileNum] == YES)
+        || ([regextestcu evaluateWithObject:mobileNum] == YES))
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+

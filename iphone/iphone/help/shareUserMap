@@ -1,0 +1,6 @@
+NSString *string = [NSString stringWithString @"hahaha"];
+NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+[ud setObject:string forKey:@"myKey"];
+NSString *value;
+value = [ud objectForKey:"myKey"];
+
