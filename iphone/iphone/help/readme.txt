@@ -18,7 +18,7 @@ http://rs.fengzhangyu.com:8080/xone-app/product/listProduct.html?_pu=1&_pm=FDFEF
 
 https://appleid.apple.com/cgi-bin/WebObjects/MyAppleId.woa/wa/directToSignIn?localang=zh_CN
 
-http://rs.fengzhangyu.com:8080/xone-app/assistant/subscribe.html?id=1&_m=1E8283A655F8E349D49EF2B287621AF1
+http://rs.fengzhangyu.com:8080/xone-app/assistant/subscribe.html?id=2&_m=1E8283A655F8E349D49EF2B287621AF1
 
 webcpic@gmail.com Cpic1234
 

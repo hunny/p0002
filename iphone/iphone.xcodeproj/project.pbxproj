@@ -74,7 +74,6 @@
 		498FFBD417C854A300BDB3D1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498FFBD317C854A300BDB3D1 /* CoreMedia.framework */; };
 		498FFBD617C857E200BDB3D1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 498FFBD517C857E200BDB3D1 /* AVFoundation.framework */; };
 		4990121C17C4E94F00E3BB76 /* notification.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4990121B17C4E94F00E3BB76 /* notification.xml */; };
-		499883C817D1E0CF00878DF6 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 499883C717D1E0CF00878DF6 /* ic_launcher.png */; };
 		49C82ADF17C8E7D1002B1399 /* NotificationDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C82ADE17C8E7D1002B1399 /* NotificationDAO.m */; };
 		49E8854317C887E50080DC69 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 49E8853917C887E50080DC69 /* index.html */; };
 		49E8854617C887E50080DC69 /* jquery.mobile-1.3.1.min.css in Resources */ = {isa = PBXBuildFile; fileRef = 49E8853C17C887E50080DC69 /* jquery.mobile-1.3.1.min.css */; };
@@ -86,8 +85,21 @@
 		49E8858117C8950D0080DC69 /* icons-18-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E8857C17C8950C0080DC69 /* icons-18-white.png */; };
 		49E8858217C8950D0080DC69 /* icons-36-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E8857D17C8950C0080DC69 /* icons-36-black.png */; };
 		49E8858317C8950D0080DC69 /* icons-36-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 49E8857E17C8950C0080DC69 /* icons-36-white.png */; };
+		49F36D6F17D20D820043E588 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F36D6E17D20D820043E588 /* ic_launcher.png */; };
+		49F36D7117D20DBA0043E588 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F36D7017D20DBA0043E588 /* ic_launcher.png */; };
 		49FD7B8B17C43E34003CDCF0 /* xml.xml in Resources */ = {isa = PBXBuildFile; fileRef = 49FD7B8A17C43E34003CDCF0 /* xml.xml */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		49F36D7217D2100F0043E588 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		498D76DD17C125E500D1B75F /* PBXContainerItemProxy */ = {
@@ -100,7 +112,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		498D76B117C125E400D1B75F /* iphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		498D76B117C125E400D1B75F /* xOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		498D76B517C125E400D1B75F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		498D76B717C125E400D1B75F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		498D76B917C125E400D1B75F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,7 +222,6 @@
 		498FFBD317C854A300BDB3D1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		498FFBD517C857E200BDB3D1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4990121B17C4E94F00E3BB76 /* notification.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = notification.xml; sourceTree = "<group>"; };
-		499883C717D1E0CF00878DF6 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		49C82ADD17C8E7D1002B1399 /* NotificationDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationDAO.h; sourceTree = "<group>"; };
 		49C82ADE17C8E7D1002B1399 /* NotificationDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationDAO.m; sourceTree = "<group>"; };
 		49E8853917C887E50080DC69 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
@@ -223,6 +234,8 @@
 		49E8857C17C8950C0080DC69 /* icons-18-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-18-white.png"; sourceTree = "<group>"; };
 		49E8857D17C8950C0080DC69 /* icons-36-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-36-black.png"; sourceTree = "<group>"; };
 		49E8857E17C8950C0080DC69 /* icons-36-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons-36-white.png"; sourceTree = "<group>"; };
+		49F36D6E17D20D820043E588 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
+		49F36D7017D20DBA0043E588 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ic_launcher.png; path = ../ic_launcher.png; sourceTree = "<group>"; };
 		49FD7B8A17C43E34003CDCF0 /* xml.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = xml.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,7 +286,7 @@
 		498D76B217C125E400D1B75F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				498D76B117C125E400D1B75F /* iphone.app */,
+				498D76B117C125E400D1B75F /* xOne.app */,
 				498D76D817C125E500D1B75F /* iphoneTests.octest */,
 			);
 			name = Products;
@@ -324,7 +337,8 @@
 		498D76BC17C125E500D1B75F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				499883C717D1E0CF00878DF6 /* ic_launcher.png */,
+				49F36D7017D20DBA0043E588 /* ic_launcher.png */,
+				49F36D6E17D20D820043E588 /* ic_launcher.png */,
 				498D779317C1313D00D1B75F /* icon@2x.png */,
 				498D779117C1312D00D1B75F /* icon.png */,
 				498D76BD17C125E500D1B75F /* iphone-Info.plist */,
@@ -593,12 +607,13 @@
 				498D76AF17C125E400D1B75F /* Resources */,
 			);
 			buildRules = (
+				49F36D7217D2100F0043E588 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
 			name = iphone;
 			productName = iphone;
-			productReference = 498D76B117C125E400D1B75F /* iphone.app */;
+			productReference = 498D76B117C125E400D1B75F /* xOne.app */;
 			productType = "com.apple.product-type.application";
 		};
 		498D76D717C125E500D1B75F /* iphoneTests */ = {
@@ -680,7 +695,8 @@
 				49E8858117C8950D0080DC69 /* icons-18-white.png in Resources */,
 				49E8858217C8950D0080DC69 /* icons-36-black.png in Resources */,
 				49E8858317C8950D0080DC69 /* icons-36-white.png in Resources */,
-				499883C817D1E0CF00878DF6 /* ic_launcher.png in Resources */,
+				49F36D6F17D20D820043E588 /* ic_launcher.png in Resources */,
+				49F36D7117D20DBA0043E588 /* ic_launcher.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,7 +873,7 @@
 				INFOPLIST_FILE = "iphone/iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = xOne;
 				PROVISIONING_PROFILE = "CCB73CAE-0ECA-4FE4-8D10-5574383FB29A";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CCB73CAE-0ECA-4FE4-8D10-5574383FB29A";
 				WRAPPER_EXTENSION = app;
@@ -875,7 +891,7 @@
 				INFOPLIST_FILE = "iphone/iphone-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = xOne;
 				PROVISIONING_PROFILE = "CCB73CAE-0ECA-4FE4-8D10-5574383FB29A";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CCB73CAE-0ECA-4FE4-8D10-5574383FB29A";
 				WRAPPER_EXTENSION = app;

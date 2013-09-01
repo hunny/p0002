@@ -160,7 +160,7 @@
     if (launchOptions != nil) {
         NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
         if (userInfo != nil) {
-            NSLog(@"local notification==================:%@",userInfo);
+            NSLog(@"local ************** notification==================:%@",userInfo);
         }
     }
     
@@ -178,12 +178,11 @@
    
     [self.window makeKeyAndVisible];
     
-    
     // 测试时 没小时执行一次 项目实际每天执行一次
     //[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL target:self selector:@selector(createLocalNotificationInfo) userInfo:nil repeats:YES];
     
     // 模拟数据库数据 没小时增加2条记录
-    //self.nstimer60s=[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL_HALF target:self selector:@selector(notificationTimer) userInfo:nil repeats:YES];
+    self.nstimer60s=[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL_HALF target:self selector:@selector(notificationTimer) userInfo:nil repeats:YES];
     
     return YES;
 }
@@ -212,6 +211,9 @@
         [notificationDao getLocalNotificationInfo];
         
         NSInteger count=[[shareUserMap objectForKey:SHARE_NOTIFICATIONS] count];
+        
+        NSLog(@"notificationTimer============count:%d",count);
+
         if(count==0)
             return;
         
@@ -364,7 +366,7 @@
      NSLog(@"usernotification  didReceiveLocalNotification start");
     
     // 判断应用程序是在后台才执行推送到
-    if(localNotification != nil && application.applicationState == UIApplicationStateActive){
+    //if(localNotification != nil && application.applicationState == UIApplicationStateActive){
         
         NSDictionary  *dict = localNotification.userInfo;
         if (dict) {
@@ -372,8 +374,15 @@
            
             NSString *inValue = [dict objectForKey:@"identify"];
             if(inValue != nil){
+                
+                // 设置推送数 
+                UIApplication *app = [UIApplication sharedApplication];
+                app.applicationIconBadgeNumber -= 1;
+                
+                //application.applicationIconBadgeNumber -= 1;
+                
                 // 取消该通知
-                [application cancelLocalNotification:localNotification];
+                //[application cancelLocalNotification:localNotification];
                 
                 NSLog(@"didReceiveLocalNotification method");
                 
@@ -384,7 +393,7 @@
                 [shareMap setObject:mutableArr forKey:SHARE_NOTIFICATIONS];
                 [shareMap synchronize];
             
-                application.applicationIconBadgeNumber -= 1;
+               
                 
                 localNotification = nil;
                 
@@ -402,7 +411,7 @@
                 [webViewController.webView loadRequest:request];
             }
             
-        }
+        //}
 
     }
 }

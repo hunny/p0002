@@ -315,6 +315,9 @@ ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStri
         if (alertView.tag == 101) {
             UITextField *textField = [alertView textFieldAtIndex:0];
             NSUserDefaults *shareMap=[NSUserDefaults standardUserDefaults];
+            if([textField.text isEqualToString:@""])
+                return;
+            
             [shareMap setValue:[NSString stringWithFormat:@"http://%@/xone-app",textField.text] forKey:ACCP_MAIN_PAGE_INPUT];
 
             //textField.keyboardType = UIKeyboardTypeDefault;

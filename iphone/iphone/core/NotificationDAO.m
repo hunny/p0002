@@ -24,7 +24,10 @@
     
     NSLog(@"notification data =============== request %@",request_url);
     
-    ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.72:8080/xone-app/assistant/subscribe.html?id=2&_m=1E8283A655F8E349D49EF2B287621AF1"]];
+    //"http://192.168.1.82:8080/xone-app/assistant/subscribe.html?id=2&_m=1E8283A655F8E349D49EF2B287621AF1"
+    
+    ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:request_url]];
+                                    
     loginRequest.defaultResponseEncoding = NSUTF8StringEncoding;
     
     [loginRequest setDidFailSelector:@selector(loginRequestDidFailedSelector:)];
@@ -79,7 +82,15 @@
     NSString *saleType=nil;
     NSString *name=nil;
     
-    NSMutableArray *arrNotification=[[shareMap objectForKey:SHARE_NOTIFICATIONS] mutableCopy];
+    NSMutableArray *arrTemp=[shareMap objectForKey:SHARE_NOTIFICATIONS];
+    
+    NSMutableArray *arrNotification=[NSMutableArray new];
+    
+    for (int i=0; i<[arrTemp count]; i++) {
+        [arrNotification addObject:(NSDictionary *)[arrTemp objectAtIndex:i]];
+    }
+    
+    //NSMutableArray *arrNotification=[[shareMap objectForKey:SHARE_NOTIFICATIONS] mutableCopy];
 
     for (GDataXMLElement *node in itemNodes) {
         identify=[[node attributeForName:@"identify"] stringValue];
@@ -100,12 +111,14 @@
               ,nil];
         NSLog(@"%@",[StringUtil nsDictionaryToString:dict]);
         [arrNotification addObject:dict];
+        NSLog(@"arrNotification============ count:%d",[arrNotification count]);
     }
-     
-    NSLog(@"SHARE_NOTIFICATIONS All============ count:%d",[arrNotification count]);
+    
     [shareMap setValue:arrNotification forKey:SHARE_NOTIFICATIONS];
     [shareMap synchronize];
     
+    NSLog(@"SHARE_NOTIFICATIONS All============ count:%d",[arrNotification count]);
+
 }
 
 @end
