@@ -21,6 +21,12 @@
 
 @implementation WebViewController
 
++ (void)initialize {
+    // Set user agent (the only problem is that we can't modify the User-Agent later in the program)
+    NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:@"Your desired user agent", @"UserAgent", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -96,6 +102,19 @@
         return NO;
 	}else if ([requestURLString rangeOfString:@"http://callClient/showAlert"].location != NSNotFound||[requestURLString rangeOfString:@"http://callclient/showAlert"].location != NSNotFound) {
 		[self popDialog:requestQueryString];
+        return NO;
+    }else if ([requestURLString rangeOfString:@"http://callClient/makeCall"].location != NSNotFound||[requestURLString rangeOfString:@"http://callclient/makeCall"].location != NSNotFound) {// 拨打电话
+        NSString *phoneNum = [params objectForKey:@"id"]; //电话号码
+    
+        NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",phoneNum]];
+        
+        if (!self.webView) {
+            self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+            // 这个webView只是一个后台的容易 不需要add到页面上来  效果跟方法二一样 但是这个方法是合法的
+        }
+        
+        [self.webView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+        
         return NO;
 	}else if([requestURLString rangeOfString:@"http://callClient/showInputAlert"].location != NSNotFound||[requestURLString rangeOfString:@"http://callclient/showInputAlert"].location != NSNotFound) {
 		
