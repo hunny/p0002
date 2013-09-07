@@ -23,7 +23,11 @@
 
 + (void)initialize {
     // Set user agent (the only problem is that we can't modify the User-Agent later in the program)
-    NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:@"Your desired user agent", @"UserAgent", nil];
+
+    NSString *userAgentString=[StringUtil getUserAgent:@""];
+
+    NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:userAgentString, @"UserAgent", nil];
+    
     [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
 }
 
@@ -74,6 +78,7 @@
  ****************************************************************/
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    
     NSString *requestURLString = [NSString stringWithFormat:@"%@",request.URL];
     NSDictionary *params = [UrlParamUtil getParamsFromUrl:request.URL];
     // 同步用户信息
@@ -106,14 +111,18 @@
     }else if ([requestURLString rangeOfString:@"http://callClient/makeCall"].location != NSNotFound||[requestURLString rangeOfString:@"http://callclient/makeCall"].location != NSNotFound) {// 拨打电话
         NSString *phoneNum = [params objectForKey:@"id"]; //电话号码
     
-        NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",phoneNum]];
+        //NSURL *phoneURL = [NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",phoneNum]];
+        NSLog(@"phoneNum %@",phoneNum);
+        UIWebView *callView=[[UIWebView alloc] init];
+        NSString *num = [NSString stringWithFormat:@"tel:%@",phoneNum];//number为号码字符串
+        NSURL *telUrl=[NSURL URLWithString:num];
+        [callView loadRequest:[NSURLRequest requestWithURL:telUrl]];
+        [self.view addSubview:callView];
         
-        if (!self.webView) {
-            self.webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-            // 这个webView只是一个后台的容易 不需要add到页面上来  效果跟方法二一样 但是这个方法是合法的
-        }
         
-        [self.webView loadRequest:[NSURLRequest requestWithURL:phoneURL]];
+        // 简单呼叫方式
+        //NSString *num = [NSString stringWithFormat:@"telprompt://%@",phoneNum];//number为号码字符串
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:num]]; //拨号
         
         return NO;
 	}else if([requestURLString rangeOfString:@"http://callClient/showInputAlert"].location != NSNotFound||[requestURLString rangeOfString:@"http://callclient/showInputAlert"].location != NSNotFound) {

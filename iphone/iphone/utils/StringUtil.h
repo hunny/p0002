@@ -12,6 +12,7 @@
 @interface StringUtil : NSObject {
 
 }
++ (NSString *) getUserAgent:(NSString *) company;
 + (NSString *) nsDictionaryToString:(NSDictionary *) dict;
 + (NSDate *) getNsDateByHour:(int) hour;
 + (NSString *)md5:(NSString *)str;

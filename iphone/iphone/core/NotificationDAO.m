@@ -20,7 +20,16 @@
 - (void)getLocalNotificationInfo
 {
     NSUserDefaults *shareMap = [NSUserDefaults standardUserDefaults];
+
+    // 判断id和deviceId是否有值
+    //bool isHasValue=(nil != [shareMap valueForKey:USER_LOGIN_ID]) && (nil != [shareMap valueForKey:DEVICE_ID]);
+    if (nil == [shareMap valueForKey:USER_LOGIN_ID] || nil == [shareMap valueForKey:USER_LOGIN_ID]) {
+        return;
+    }
     NSString *request_url=[NSString stringWithFormat:@"%@/assistant/subscribe.html?id=%@&_m=%@",[shareMap valueForKey:ACCP_MAIN_PAGE_INPUT],[shareMap valueForKey:USER_LOGIN_ID],[shareMap valueForKey:DEVICE_ID]];
+    
+    //NSLog(@"%@ ====  deviceId%@  %d",[shareMap valueForKey:USER_LOGIN_ID],[shareMap valueForKey:DEVICE_ID],isHasValue);
+    
     
     NSLog(@"notification data =============== request %@",request_url);
     
@@ -33,6 +42,7 @@
     [loginRequest setDidFailSelector:@selector(loginRequestDidFailedSelector:)];
     [loginRequest setDidStartSelector:@selector(loginRequestDidStartSelector:)];
     [loginRequest setDidFinishSelector:@selector(loginRequestDidFinishSelector:)];
+    [loginRequest addRequestHeader:@"User-Agent" value:[StringUtil getUserAgent:@""]];
     [loginRequest setDelegate:self];
     [loginRequest startSynchronous];
 }

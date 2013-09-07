@@ -8,9 +8,21 @@
 
 #import "StringUtil.h"
 #import "ValidateUtil.h"
+#import "SystemCoreProfile.h"
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 
 @implementation StringUtil
+
++ (NSString *) getUserAgent:(NSString *) company
+{
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    NSString *userAgent=[webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    if(![userAgent hasSuffix:REQUEST_USERAGENT]){
+     return [NSString stringWithFormat:@"%@%@",userAgent,REQUEST_USERAGENT];
+    }
+    
+    return userAgent;
+}
 
 + (NSString *) nsDictionaryToString:(NSDictionary *) dict
 {

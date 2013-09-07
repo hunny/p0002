@@ -201,6 +201,7 @@
     bool isConnect= [[NSString stringWithFormat:@"%i",[[ConnectedToNetwork new] connectedToNetwork]] isEqualToString:@"1"];
     NSLog(@"isTrue: %d,isConnect:%d",isTrue,isConnect);
     
+    
     // 判断网络是否联通
     if(isConnect && isTrue)
     {
