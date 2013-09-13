@@ -179,6 +179,9 @@
     [self.window makeKeyAndVisible];
     
     // 测试时 没小时执行一次 项目实际每天执行一次
+    
+   
+
     //[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL target:self selector:@selector(createLocalNotificationInfo) userInfo:nil repeats:YES];
     
     // 模拟数据库数据 没小时增加2条记录
@@ -365,7 +368,14 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification*)localNotification{
      NSLog(@"usernotification  didReceiveLocalNotification start");
+     NSUserDefaults *shareMap=[NSUserDefaults standardUserDefaults];
+     NSInteger count=[[shareMap objectForKey:SHARE_NOTIFICATIONS] count];
     
+     if(count==0)
+        return;
+    
+     UIApplication *app = [UIApplication sharedApplication];
+     
     // 判断应用程序是在后台才执行推送到
     //if(localNotification != nil && application.applicationState == UIApplicationStateActive){
         
@@ -377,24 +387,19 @@
             if(inValue != nil){
                 
                 // 设置推送数 
-                UIApplication *app = [UIApplication sharedApplication];
                 app.applicationIconBadgeNumber -= 1;
-                
-                //application.applicationIconBadgeNumber -= 1;
-                
+
                 // 取消该通知
                 //[application cancelLocalNotification:localNotification];
                 
                 NSLog(@"didReceiveLocalNotification method");
                 
                 //从本地存储对象中移除当前通知信息
-                NSUserDefaults *shareMap=[NSUserDefaults standardUserDefaults];
+                
                 NSMutableArray *mutableArr=[[shareMap valueForKey:SHARE_NOTIFICATIONS] mutableCopy];
                 [mutableArr removeObject:dict];
                 [shareMap setObject:mutableArr forKey:SHARE_NOTIFICATIONS];
                 [shareMap synchronize];
-            
-               
                 
                 localNotification = nil;
                 

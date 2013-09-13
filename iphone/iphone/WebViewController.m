@@ -14,6 +14,7 @@
 #import "ASIHTTPRequest.h"
 #import "GDataXMLNode.h"
 #import "NotificationDAO.h"
+#import "ConnectedToNetwork.h"
 
 @interface WebViewController ()
 
@@ -40,6 +41,8 @@
     
     self.webView.delegate = self;   
     self.webView.scalesPageToFit = YES;
+    self.webView.detectsPhoneNumbers  =  YES;
+    self.webView.scrollView.bounces = NO;
     
     activityIndicatorView = [[UIActivityIndicatorView alloc]
                              initWithFrame : CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)] ;
@@ -55,18 +58,16 @@
 //    
 //    [self.webView loadRequest:request];
     
-    NSUserDefaults *shareMap=[NSUserDefaults standardUserDefaults];
-    NSString *inputPath=[shareMap valueForKey:ACCP_MAIN_PAGE_INPUT];
-//    if(inputPath != Nil && [inputPath length] >0 )
-//    {
-//        NSURL *url =[NSURL URLWithString:ACCP_MAIN_PAGE];
-//        NSURLRequest *request =[NSURLRequest requestWithURL:url];
-//        [self.webView loadRequest:request];
-//    }else{
-        self.webView.delegate=self;
+    bool isConnect= [[NSString stringWithFormat:@"%i",[[ConnectedToNetwork new] connectedToNetwork]] isEqualToString:@"1"];
+    self.webView.delegate=self;
+    if (isConnect) {
+        NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:ACCP_MAIN_PAGE]];
+        [self.webView loadRequest:request];
+    }else{
+       
         NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
-    //}
+    }
     
     [_btnLogin addTarget:self  action:@selector(btnLoginEvent:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -395,6 +396,24 @@ ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStri
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+//    CGRect newFrame = webView.frame;
+//    newFrame.size.height = [self.webView.scrollView contentSize].height;
+//    newFrame.size.width = [self.webView.scrollView contentSize].width;
+//    self.webView.frame = newFrame;
+//    UIScrollView  *scroller = [self.webView.subviews objectAtIndex:0];
+//    if (scroller)
+//    {
+//        scroller.bounces = NO;
+//        scroller.alwaysBounceVertical = NO;
+//    }
+//    for (id subview in self.webView.subviews) {
+//        if ([[subview class] isSubclassOfClass:[UIScrollView class]]) {
+//            ((UIScrollView *)subview).bounces=NO;
+//        }
+//    }
+    
+    self.webView.scrollView.bounces = NO;
+    
     [activityIndicatorView stopAnimating];
 }
 
