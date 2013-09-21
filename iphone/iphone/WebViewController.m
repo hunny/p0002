@@ -35,22 +35,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     //清除UIWebView的缓存
     //[self.webView rem];
+    //self.webView.setBackgroundColor(Color.parseColor("#000000"));
+    //self.webView.backgroundColor=Color.parseColor("#000000");
+    
+    self.webView.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor=[UIColor blackColor];
     
     self.webView.delegate = self;   
     self.webView.scalesPageToFit = YES;
     self.webView.detectsPhoneNumbers  =  YES;
     self.webView.scrollView.bounces = NO;
-    
-    activityIndicatorView = [[UIActivityIndicatorView alloc]
-                             initWithFrame : CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)] ;
-    [activityIndicatorView setCenter: self.webView.center] ;
-    [activityIndicatorView setActivityIndicatorViewStyle: UIActivityIndicatorViewStyleGray] ;
-    [self.webView addSubview : activityIndicatorView] ;
-  
-        
+
+
 //    NSString *string = [NSString stringWithFormat:@"%@", path];
 //    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    NSURL *url =[NSURL URLWithString:ACCP_MAIN_PAGE];
@@ -58,13 +57,20 @@
 //    
 //    [self.webView loadRequest:request];
     
+    activityIndicatorView = [[UIActivityIndicatorView alloc]
+                             initWithFrame : CGRectMake(0.0f, 0.0f, 32.0f, 32.0f)] ;
+    [activityIndicatorView setCenter: self.webView.center] ;
+    [activityIndicatorView setActivityIndicatorViewStyle: UIActivityIndicatorViewStyleGray] ;
+    [self.webView addSubview : activityIndicatorView] ;
+    
     bool isConnect= [[NSString stringWithFormat:@"%i",[[ConnectedToNetwork new] connectedToNetwork]] isEqualToString:@"1"];
     self.webView.delegate=self;
+
     if (isConnect) {
-        NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:ACCP_MAIN_PAGE]];
+        NSString *remoteUrlPath=[NSString stringWithFormat:@"%@%@",ACCP_MAIN_PAGE,PAGE_INDEX];
+        NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:remoteUrlPath]];
         [self.webView loadRequest:request];
     }else{
-       
         NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
     }
@@ -99,6 +105,8 @@
             string=[string stringByAppendingFormat:@"/assistant/index.html"];
         }else if([fromPage isEqualToString:@"4"]){
             string=[string stringByAppendingFormat:@"/login/index.html"];
+        }else{
+            string=[string stringByAppendingString:fromPage];
         }
         
         NSURL *url =[NSURL URLWithString:string];
@@ -411,10 +419,9 @@ ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStri
 //            ((UIScrollView *)subview).bounces=NO;
 //        }
 //    }
-    
-    self.webView.scrollView.bounces = NO;
-    
+
     [activityIndicatorView stopAnimating];
+    self.webView.scrollView.bounces = NO;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -499,6 +506,7 @@ ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStri
 
 
 - (void)viewDidUnload {
+    NSLog(@"viewDidUnload============");
     [self setBtnLogin:nil];
     [self setBtnRigerst:nil];
     [super viewDidUnload];

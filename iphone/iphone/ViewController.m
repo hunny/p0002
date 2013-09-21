@@ -21,7 +21,6 @@
     [super viewDidLoad];
     [_btnLogin addTarget:self  action:@selector(btnLoginEvent:) forControlEvents:UIControlEventTouchUpInside];
     
-    
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {

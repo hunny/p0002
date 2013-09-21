@@ -4,47 +4,91 @@
 		<title>Page Title</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript">
-		</script>
-		<link rel="stylesheet"  href="jquery.mobile-1.3.1.min.css"/>
-		<script src="jquery-1.10.0.min.js"></script>
-		<script src="jquery.mobile-1.3.1.min.js"></script>
+		<link rel="stylesheet" href="jquery.mobile-1.3.2.min.css"/>
+		<link rel="stylesheet" href="my-theme-a.min.css"/>
+		<link rel="stylesheet" href="selfdefine.css"/>
+		<script type="text/javascript" src="jquery-1.10.0.min.js"></script>
+		<script type="text/javascript" src="jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript">
+                window.main =function (){};
+                window.main.loadPage=function(pageUrl){
+                    location.href='http://callClient/loadRequestWebview?fromPage='+pageUrl;
+                }
+        </script>
 	</head>
 	<body>
-		<div data-role="page">
-			<div data-id="myheader" data-role="header" data-position="fixed" data-tap-toggle="true"><h1>欢迎使用</h1></div>
-			<div data-role="content">
-				<div data-role="collapsible-set" data-theme="b" data-content-theme="c">
-				    <div data-role="collapsible" data-collapsed="false">
-				        <h3>软件说明</h3>
-						<p>　　本产品设计的目的是为用户提供产品信息、广告、求购、物流配送、资金担保及其它需求信息，并通过沟通服务达成交易的互联资讯平台。</p>
-						<code id="debug"></code>
+		<div id="datarolepage" data-role="page" data-id="myindexpage">
+			<div data-id="myheader" data-role="header" data-position="fixed" data-tap-toggle="true">
+				<a href="#" onclick="window.main.loadPage('/login/indexRegister.html');" data-icon="check">注册</a>
+				<h1>欢迎使用</h1>
+				<a href="#" class="ui-btn-right" onclick="window.main.makeCall('4008979727');" data-icon="grid">客服</a>
+			</div>
+			<div data-role="content" class="guide-page">
+			    <div class="ui-grid-a">
+				    <div class="ui-block-a">
+				    	<div class="ui-bar">
+							<div class="desktop-icon" style="text-align:center;">
+				    		<a href="#" onclick="window.main.loadPage('/product/listSales.html');" class="ui-btn-up-no" data-theme="no" data-shadow="false" data-role="button" data-icon="sale-b-64" data-iconpos="top" data-inline="true">促销产品</a>
+							</div>
+				    	</div>
 				    </div>
-				    <div data-role="collapsible">
-				        <h3>相关操作</h3>
-						<ul data-role="listview" data-inset="true">
-						    <li data-icon="refresh"><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview'">刷新</a></li>
-						    <li data-icon="gear"><a href="#" onclick="javascript:location.href='http://callClient/showInputAlert'">设置</a></li>
-                            
-						</ul>
+				    <div class="ui-block-b">
+				    	<div class="ui-bar">
+							<div class="desktop-icon" style="text-align:center;">
+							<a href="#" onclick="window.main.loadPage('/purchase/index.html');" class="ui-btn-up-no" data-theme="no" data-shadow="false" data-role="button" data-icon="sale-d-64" data-iconpos="top" data-inline="true">大家想买</a>
+							</div>
+				    	</div>
 				    </div>
-			    </div>
+				</div>
+			    <div class="ui-grid-a">
+				    <div class="ui-block-a">
+				    	<div class="ui-bar">
+							<div class="desktop-icon" style="text-align:center;">
+				    		<a href="#" onclick="window.main.loadPage('/product/listGroups.html');" class="ui-btn-up-no" data-theme="no" data-shadow="false" data-role="button" data-icon="sale-c-64" data-iconpos="top" data-inline="true">组团产品</a>
+							</div>
+				    	</div>
+				    </div>
+				    <div class="ui-block-b">
+				    	<div class="ui-bar">
+							<div class="desktop-icon" style="text-align:center;">
+				    		<a href="#" onclick="window.main.loadPage('/delivery/index.html');" class="ui-btn-up-no" data-theme="no" data-shadow="false" data-role="button" data-icon="sale-a-64" data-iconpos="top" data-inline="true">物流配送</a>
+							</div>
+				    	</div>
+				    </div>
+				</div>
+			    <div class="ui-grid-a">
+				    <div class="ui-block-a">
+				    	<div class="ui-bar">
+							<div class="desktop-icon" style="text-align:center;">
+				    		<a href="#" onclick="window.main.loadPage('/login/indexRegister.html');" class="ui-btn-up-no" data-theme="no" data-shadow="false" data-role="button" data-icon="reg-64" data-iconpos="top" data-inline="true">我要注册</a>
+							</div>
+				    	</div>
+				    </div>
+				    <div class="ui-block-b">
+				    	<div class="ui-bar">
+				    		<div class="desktop-icon" style="text-align:center;">
+							<a href="#" onclick="window.main.loadPage('/login/index.html');" class="ui-btn-up-no" data-theme="no" data-shadow="false" data-role="button" data-icon="login-64" data-iconpos="top" data-inline="true">我要登录</a>
+							</div>
+				    	</div>
+				    </div>
+				</div>
 			</div>
 			<div data-id="myfooter" data-role="footer" data-position="fixed"">
-				<div data-role="navbar" data-iconpos="left">
+				<div data-role="navbar" data-iconpos="top">
 					<ul>
-						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=1'" rel="external" data-icon="gear">售卖</a></li>  
-						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=2'" rel="external" data-icon="refresh">购买</a></li>
-						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=3'" rel="external" data-icon="grid">助手</a></li>
-						<li><a href="#" onclick="javascript:location.href='http://callClient/loadRequestWebview?fromPage=4'" rel="external" data-icon="home">用户</a></li>
+						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/market.html');" data-icon="sale-24">逛逛市场</a></li>  
+						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/guide.html');" data-icon="green-24">绿色通道</a></li>
+						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/index.html');" data-icon="parter-24">我的伙计</a></li>
+						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/login/main.html');" data-icon="user-24">用户中心</a></li>
 					</ul>
 				</div
 			</div>
 		</div>
-		<script type="text/javascript">  
-		$(document).bind("pageinit", function() {
-			$("[data-role=page]").click();
-		});
+		<script type="text/javascript" language="javascript">  
+		//$('#datarolepage').bind("pageshow", function() {
+			//防止头部标题隐藏在通知栏下
+			//$('#datarolepage').click();
+		//});
 		</script>
 	</body>
 </html>

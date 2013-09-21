@@ -27,7 +27,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "498D76B017C125E400D1B75F"
-            BuildableName = "xOne.app"
+            BuildableName = "xone.app"
             BlueprintName = "iphone"
             ReferencedContainer = "container:iphone.xcodeproj">
          </BuildableReference>

@@ -179,13 +179,11 @@
     [self.window makeKeyAndVisible];
     
     // 测试时 没小时执行一次 项目实际每天执行一次
-    
-   
 
     //[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL target:self selector:@selector(createLocalNotificationInfo) userInfo:nil repeats:YES];
     
     // 模拟数据库数据 没小时增加2条记录
-    self.nstimer60s=[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL_HALF target:self selector:@selector(notificationTimer) userInfo:nil repeats:YES];
+    //self.nstimer60s=[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL_HALF target:self selector:@selector(notificationTimer) userInfo:nil repeats:YES];
     
     return YES;
 }
