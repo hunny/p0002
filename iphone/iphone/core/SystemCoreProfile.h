@@ -12,13 +12,15 @@
 //新项目测试
 //#define ACCP_MAIN_PAGE @"http://rs.fengzhangyu.com:8080/xone-app"
 
-#define ACCP_MAIN_PAGE @"http://121.199.16.115/xone-app"
+#define ACCP_MAIN_PAGE @"http://121.199.16.115:8080/xone-app"
 
 //#define ACCP_MAIN_PAGE @"http://192.168.1.5/xone-app"
 
 #define PAGE_INDEX @""
 
 //#define PAGE_INDEX @"/assistant/guide.html"
+
+//#define ACCP_MAIN_PAGE @"http://www.baidu.com"
 
 //#define ACCP_MAIN_PAGE @"http://116.228.131.213/cpicmobile_ft/pages/iphone/v3/carNewChange.html"
 
