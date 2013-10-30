@@ -26,11 +26,12 @@ http://rs.fengzhangyu.com:8080/xone-app/assistant/subscribe.html?id=2&_m=1E8283A
 webcpic@gmail.com Cpic1234
 
 
-alexhuang0906@hotmail.com  Hxx8152304
+alexhuang0906@hotmail.com   Hxx477150  Hxx8152304
 
 ／／Alexhuang0906@.apple.com1
 
 Alexhuang0906@hotmail.com hxx!@#$%^
+
 
 
 
