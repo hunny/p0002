@@ -15,6 +15,7 @@
 #import "GDataXMLNode.h"
 #import "NotificationDAO.h"
 #import "ConnectedToNetwork.h"
+#import "UIDevice+IdentifierAddition.h"
 
 @interface WebViewController ()
 
@@ -156,7 +157,7 @@
         return NO;
 	}else if ([requestURLString rangeOfString:@"http://callClient/mloginValue"].location != NSNotFound||[requestURLString rangeOfString:@"http://callclient/mloginValue"].location != NSNotFound) {// 初始化登录页面 同步给页面一个设备号
   
-        NSString *deviceId=[StringUtil md5:[[UIDevice currentDevice] uniqueIdentifier]];
+        NSString *deviceId=[StringUtil md5:[[UIDevice currentDevice] uniqueGlobalDeviceIdentifier]];
         deviceId=[deviceId uppercaseString];
         [shareMap synchronize];
        
@@ -231,10 +232,6 @@ ASIHTTPRequest *loginRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithStri
     NSUserDefaults *shareNotifications = [NSUserDefaults standardUserDefaults];
     NSDictionary *params = [UrlParamUtil getParamsFromUrl:loginRequest.url];
     NSString *id = [params objectForKey:@"id"];
-    //获取设备的udid
-    NSString *uuid = [[UIDevice currentDevice] uniqueIdentifier];
-    [shareNotifications setValue:id forKey:USER_LOGIN_ID];
-    [shareNotifications setValue:uuid forKey:DEVICE_ID];
     [shareNotifications synchronize];
 }
 */

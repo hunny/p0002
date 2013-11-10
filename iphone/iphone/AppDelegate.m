@@ -17,6 +17,7 @@
 #import "GDataXMLNode.h"
 #import <AVFoundation/AVAudioSession.h>
 #import "NotificationDAO.h"
+#import "UIDevice+IdentifierAddition.h"
 
 
 
@@ -27,7 +28,7 @@
 - (void)getDeviceAndOtherInfo
 {
     //获取设备的udid
-    NSString *uuid = [[UIDevice currentDevice] uniqueIdentifier];
+    NSString *uuid = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
     NSLog(@"uuid=====%@",uuid);
     NSLog(@"timeIntervalSince1970 ==%d",(int)[[NSDate date] timeIntervalSince1970]);
     
@@ -167,12 +168,6 @@
     //self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
 
     self.viewController = [[WebViewController alloc] initWithNibName:@"LoadRemoteHtml" bundle:nil];
-    
-    [[UIApplication sharedApplication] setKeepAliveTimeout:600 handler:^{
-        //执行你想要执行的任务，同时可以配合第一种任务，以增加某些同步方法的执行时间，比如说下载数据等
-        NSLog(@"循环执行事件===========");
-        [self notificationTimer];
-    }];
   
     self.window.rootViewController = self.viewController;
    
@@ -183,7 +178,7 @@
     //[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL target:self selector:@selector(createLocalNotificationInfo) userInfo:nil repeats:YES];
     
     // 模拟数据库数据 没小时增加2条记录
-    //self.nstimer60s=[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL_HALF target:self selector:@selector(notificationTimer) userInfo:nil repeats:YES];
+    self.nstimer60s=[NSTimer scheduledTimerWithTimeInterval:TIME_INTERVAL target:self selector:@selector(notificationTimer) userInfo:nil repeats:YES];
     
     return YES;
 }
@@ -408,7 +403,6 @@
                 
                 NSLog(@"requestUrl:%@",reqeustUrl);
                 
-                //NSURL *url =[NSURL URLWithString:@"http://www.baidu.com"];
                 NSURL *url =[NSURL URLWithString:reqeustUrl];
                 
                 NSURLRequest *request =[NSURLRequest requestWithURL:url];

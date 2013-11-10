@@ -56,9 +56,9 @@
 // 设置每天早晨9点推送消息
 #define TIME_INTERVAL_HOUR 9
 
-#define TIME_INTERVAL 1*60      //设置定时器的执行间隔为1天
+#define TIME_INTERVAL 1*12*60*60      //设置定时器的执行间隔为1天
 
-#define TIME_INTERVAL_HALF 1*60       //模拟数据使用 设置半小时增加2条记录
+#define TIME_INTERVAL_HALF 1*600       //模拟数据使用 设置半小时增加2条记录
 
 #define NOTIFICATION_PAGE @"/product/listProduct.html"
 

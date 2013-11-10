@@ -38,10 +38,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-		<string>voip</string>
-	</array>
+	<array/>
 	<key>UILaunchImageFile</key>
 	<string>Default.png</string>
 	<key>UILaunchImageFile~iphone</key>
