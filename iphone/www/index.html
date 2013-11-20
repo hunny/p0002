@@ -12,6 +12,22 @@
 		<script type="text/javascript" src="jquery-1.10.0.min.js"></script>
 		<script type="text/javascript" src="jquery.mobile-1.3.2.min.js"></script>
 		<script type="text/javascript" src="mycarousel.js"></script>
+        <script type="text/javascript">
+                $(document).ready(function() {
+                                  $('.guide-page-table img').height(($(document).width() - 24) / 3);
+                                  $('div.guide-advertisement').mycarousel({
+                                                                          width: $('div.guide-advertisement').width(),
+                                                                          height: 140,
+                                                                          auto: true,
+                                                                          autoeasing: 5000
+                                                                          });
+                                  });
+                
+                window.main =function (){};
+                window.main.loadPage=function(pageUrl){
+                    location.href='http://callClient/loadRequestWebview?fromPage='+pageUrl;
+                }
+        </script>
         <script type="text/javascript"> 
             $(document).ready(function() {
             	$('.guide-page-table img').height(($(document).width() - 24) / 3);
@@ -22,36 +38,27 @@
 					autoeasing: 5000
 				});
 			});
-
-            window.main =function (){};
-            window.main.loadPage=function(pageUrl){
-                location.href='http://callClient/loadRequestWebview?fromPage='+pageUrl;
-            }
         </script>
 	</head>
 	<body>
 		<div id="datarolepage" data-role="page" data-id="myindexpage">
 			<div data-id="myheader" data-role="header" data-position="fixed" data-tap-toggle="true">
 				<a href="#" onclick="window.main.loadPage('/login/indexRegister.html');" data-icon="check">注册</a>
-				<h1>欢迎使用</h1>
-				<a href="#" class="ui-btn-right" onclick="window.main.makeCall('4008979727');" data-icon="grid">客服</a>
+				<h1><img src="header_logo.png" width="25px" height="16px">欢迎使用</h1>
+				<a href="#" class="ui-btn-right" onclick="window.main.makeCall('4008979727');" data-icon="tel-24">客服</a>
 			</div>
 			<div data-role="content" class="guide-page">
 				<div class="ui-grid-solo" style="padding-top:0px;">
 					<table class="guide-page-table">
 						<tbody>
 							<tr>
-								<td><div><a href="#" onclick="window.main.loadPage('/product/listSales.html');" data-role="none"><img src="picture6.jpg"></a></div></td>
-								<td><div><a href="#" onclick="window.main.loadPage('/purchase/index.html');" data-role="none"><img src="picture2.jpg"></a></div></td>
-								<td><div><a href="#" onclick="window.main.loadPage('/product/listGroups.html');" data-role="none"><img src="picture8.jpg"></a></div></td>
+								<td><div><a href="#" onclick="window.main.loadPage('/product/listSales.html');" data-role="none"><img src="A001.png"></a></div></td>
+								<td><div><a href="#" onclick="window.main.loadPage('/purchase/index.html');" data-role="none"><img src="A022.png"></a></div></td>
+								<td><div><a href="#" onclick="window.main.loadPage('/product/index.html');" data-role="none"><img src="A002.png"></a></div></td>
 							</tr>
 							<tr>
-								<td><div><a href="#" onclick="window.main.loadPage('/delivery/index.html');" data-role="none"><img src="picture9.jpg"></a></div></td>
-								<td><div><a href="#" onclick="window.main.loadPage('/login/indexRegister.html');" data-role="none"><img src="picture5.jpg"></a></div></td>
-								<td><div><a href="#" onclick="window.main.loadPage('/login/index.html');" data-role="none"><img src="picture4.jpg"></a></div></td>
-							</tr>
-							<tr>
-								<td class="add"><div><a href="#" onclick="window.main.loadPage('/assistant/linkkeys.html');" data-role="none">&nbsp;</a></div></td>
+								<td><div><a href="#" onclick="window.main.loadPage('/product/listGroups.html');" data-role="none"><img src="A003.png"></a></div></td>
+								<td><div><a href="#" onclick="window.main.loadPage('/assistant/linkkeys.html');" data-role="none"><img src="MORE.png"></a></div></td>
 							</tr>
 						</tbody>
 					</table>
@@ -60,8 +67,8 @@
 			<div data-id="myfooter" data-role="footer" data-position="fixed"">
 				<div data-role="navbar" data-iconpos="top">
 					<ul>
-						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/market.html');" data-icon="sale-24">逛逛市场</a></li>  
 						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/guide.html');" data-icon="green-24">绿色通道</a></li>
+						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/market.html');" data-icon="sale-24">逛逛市场</a></li>  
 						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/assistant/index.html');" data-icon="parter-24">我的伙计</a></li>
 						<li><a data-theme="va" href="#" onclick="window.main.loadPage('/login/main.html');" data-icon="user-24">用户中心</a></li>
 					</ul>

@@ -17,10 +17,6 @@ table.guide-page-table tr td a {
 	font-weight:normal;
 	display:block;
 }
-table.guide-page-table tr td:first-child {
-	padding:0px;
-	padding-right:4px;
-}
 table.guide-page-table tr td:last-child {
 	padding:0px;
 	padding-left:4px;
@@ -28,6 +24,10 @@ table.guide-page-table tr td:last-child {
 table.guide-page-table tr td:nth-child(2) {
 	padding-left:2px;
 	padding-right:2px;
+}
+table.guide-page-table tr td:first-child {
+	padding:0px;
+	padding-right:4px;
 }
 table.guide-page-table img {
 	height:90px;
