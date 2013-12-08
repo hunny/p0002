@@ -14,13 +14,16 @@
 			touchmove: true,
 			autoeasing: 4000
 		}, s = $.extend({}, defaults, options);// This makes it so the users custom options overrides the default ones
-		var touchStartEvent = $.support.touch ? "touchstart" : "mousedown";
-		var touchStopEvent = $.support.touch ? "touchend" : "mouseup";
 		return this.each(function() {
 			var $this = $(this);
 			if ($this.find('.ui-carbox').length > 0) {
-				$this.show();
-				return;
+				var html = $this.data('mycarousel');
+				$this.html(html);
+				stopAutoEasing($this);
+				//$this.show();
+				//return;
+			} else {
+				$this.data('mycarousel', $this.html());
 			}
 			$this.css({
 				'overflow': 'hidden'
@@ -85,13 +88,6 @@
 			}
 			return this;
 		});
-		function info(msg) {
-			if ($.isFunction(debug)) {
-				debug(msg);
-			} else {
-				console.log(msg);
-			}
-		}
 		function autoEasing(base, length, time) {
 			var interval = setInterval(function() {
 				triggerNext(base, length);
@@ -135,11 +131,9 @@
 		function scrollImage(base, i) {
 			var offset = parseFloat(i * s.width * (-1));
 			var content = base.find('div.ui-carbox-content');
-//			info('offset:' + offset + ', left:' + content.position().left);
 			content.animate({left: offset}, s.easing, function() {
 				$('body').addClass('dummyClass').removeClass('dummyClass');
 			});
-//			info('offset:' + offset + ', left:' + content.position().left);
 			base.find('.ui-carbox-banner a').removeClass('active');
 			base.find('.ui-carbox-banner a.click' + i).addClass('active');
 			putIndex(base, i);
